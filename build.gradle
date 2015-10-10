@@ -1,0 +1,30 @@
+group 'com.richashworth'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'scala'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.scala-lang:scala-library:2.11.+"
+    testCompile "org.scalatest:scalatest_2.11:2.2.5"
+    testCompile "junit:junit:4.+"
+    testRuntime "org.pegdown:pegdown:1.6.0"
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+    distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
+}
+
+task acceptanceTest(dependsOn: ['compileTestScala'], type: JavaExec, group: 'verification') {
+    main = 'org.scalatest.tools.Runner'
+    args = ['-R', 'build/classes/test', '-o', '-h', 'build/reports/bdd']
+    classpath = sourceSets.test.runtimeClasspath
+}
+tasks.check.dependsOn.add acceptanceTest
+
+tasks.acceptanceTest.shouldRunAfter test
