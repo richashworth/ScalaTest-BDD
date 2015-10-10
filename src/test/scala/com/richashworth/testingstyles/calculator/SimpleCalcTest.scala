@@ -11,7 +11,7 @@ class SimpleCalcTest extends AcceptanceTest {
 
   markup {
     """
-       As a Credit Officer
+       As a business user
        I want to be able to perform calculations
        So that I can compute totals for my reports
     """
