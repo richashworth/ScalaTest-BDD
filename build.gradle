@@ -25,6 +25,7 @@ task acceptanceTest(dependsOn: ['compileTestScala'], type: JavaExec, group: 'ver
     args = ['-R', 'build/classes/test', '-o', '-h', 'build/reports/bdd']
     classpath = sourceSets.test.runtimeClasspath
 }
+
 tasks.check.dependsOn.add acceptanceTest
 
 tasks.acceptanceTest.shouldRunAfter test
