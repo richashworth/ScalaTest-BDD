@@ -10,8 +10,11 @@ repositories {
 
 dependencies {
     compile "org.scala-lang:scala-library:2.11.+"
-    testCompile "org.scalatest:scalatest_2.11:2.2.5"
+
     testCompile "junit:junit:4.+"
+    testCompile "org.scalatest:scalatest_2.11:2.2.5"
+    testCompile "org.seleniumhq.selenium:selenium-java:2.18.0"
+
     testRuntime "org.pegdown:pegdown:1.6.0"
 }
 
@@ -29,3 +32,4 @@ task acceptanceTest(dependsOn: ['compileTestScala'], type: JavaExec, group: 'ver
 tasks.check.dependsOn.add acceptanceTest
 
 tasks.acceptanceTest.shouldRunAfter test
+

@@ -5,7 +5,7 @@ import java.math.BigDecimal
 /**
  * Created by rich on 10/10/2015.
  */
-class SimpleCalcTest extends AcceptanceTest {
+class SimpleCalcTest extends AbstractAcceptanceTest {
 
   val calc: Calculator = new SimpleCalc
 
